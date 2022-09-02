@@ -2,7 +2,7 @@ import './styles/global.scss';
 import styles from './App.module.scss'
 
 import { Header } from './components/Header'
-import { Plus, Trash } from 'phosphor-react'
+import { Check, Plus, Trash } from 'phosphor-react'
 
 function App() {
   return (
@@ -18,21 +18,13 @@ function App() {
 
         <ul className={styles.taskList}>
           <li>
-            <input type="checkbox" />
+            <label>
+              <input type="checkbox" />
 
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut expedita
-              aliquid temporibus magnam voluptates adipisci officia, quis neque minus?
-              Laboriosam dolor excepturi eveniet iste velit amet, commodi consequatur a magni!
-            </p>
-
-            <button>
-              <Trash />
-            </button>
-
-          </li>
-          <li>
-            <input type="checkbox" />
+              <span>
+                <Check />
+              </span>
+            </label>
 
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut expedita
@@ -45,16 +37,42 @@ function App() {
             </button>
           </li>
           <li>
-            <input type="checkbox" />
+            <label>
+              <input type="checkbox" />
+
+              <span>
+                <Check />
+              </span>
+            </label>
 
             <p>
-              Lorem ipsum dolor sit, amet
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut expedita
+              aliquid temporibus magnam voluptates adipisci officia, quis neque minus?
+              Laboriosam dolor excepturi eveniet iste velit amet, commodi consequatur a magni!
             </p>
 
             <button>
               <Trash />
             </button>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" />
 
+              <span>
+                <Check />
+              </span>
+            </label>
+
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut expedita
+              aliquid temporibus magnam voluptates adipisci officia, quis neque minus?
+              Laboriosam dolor excepturi eveniet iste velit amet, commodi consequatur a magni!
+            </p>
+
+            <button>
+              <Trash />
+            </button>
           </li>
         </ul>
       </main>
