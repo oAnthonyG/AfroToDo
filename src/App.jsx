@@ -1,8 +1,9 @@
 import './styles/global.scss';
-import styles from './App.module.scss'
+import styles from './App.module.scss';
 
-import { Header } from './components/Header'
-import { Check, Plus, Trash } from 'phosphor-react'
+import { Header } from './components/Header';
+import {Plus} from 'phosphor-react';
+import { Task } from './components/Task';
 
 function App() {
   return (
@@ -17,63 +18,10 @@ function App() {
         <h3 className={styles.status}>Tarefas concluídas <span> 3 de 6</span></h3>
 
         <ul className={styles.taskList}>
-          <li>
-            <label>
-              <input type="checkbox" />
-
-              <span>
-                <Check />
-              </span>
-            </label>
-
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut expedita
-              aliquid temporibus magnam voluptates adipisci officia, quis neque minus?
-              Laboriosam dolor excepturi eveniet iste velit amet, commodi consequatur a magni!
-            </p>
-
-            <button>
-              <Trash />
-            </button>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" />
-
-              <span>
-                <Check />
-              </span>
-            </label>
-
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut expedita
-              aliquid temporibus magnam voluptates adipisci officia, quis neque minus?
-              Laboriosam dolor excepturi eveniet iste velit amet, commodi consequatur a magni!
-            </p>
-
-            <button>
-              <Trash />
-            </button>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" />
-
-              <span>
-                <Check />
-              </span>
-            </label>
-
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut expedita
-              aliquid temporibus magnam voluptates adipisci officia, quis neque minus?
-              Laboriosam dolor excepturi eveniet iste velit amet, commodi consequatur a magni!
-            </p>
-
-            <button>
-              <Trash />
-            </button>
-          </li>
+          <Task content="Hello, Friend!"/>
+          <Task content="Buy a car"/>
+          <Task content=" Sold the chicken"/>
+          <Task content="soup with a soda on the side"/>
         </ul>
       </main>
     </>
