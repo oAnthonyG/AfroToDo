@@ -6,7 +6,7 @@ export function Task(props) {
   return (
     <li className={styles.task}>
       <label>
-        <input type="checkbox" value={props.isDone} onChange={props.onCheck} />
+        <input type="checkbox" checked={props.isDone} onChange={props.onCheck} />
 
         <span>
           <Check />

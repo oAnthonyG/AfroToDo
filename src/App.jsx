@@ -8,11 +8,15 @@ import { Task } from './components/Task';
 
 function App() {
   const [taskText, setTaskText] = useState('')
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(()=>{
+    const localTasks = localStorage.getItem('@AfroToDo:tasks');
+
+    return JSON.parse(localTasks) ||  [];
+  });
 
   const doneCount = tasks.reduce((acc, task) => {
-    return task.done ? acc += 1 : acc
-  }, 0)
+    return task.done ? acc += 1 : acc;
+  }, 0);
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -22,8 +26,11 @@ function App() {
       content: taskText,
       done: false
     }
+    const newTasks = [...tasks, newTask];
 
-    setTasks([...tasks, newTask])
+    localStorage.setItem('@AfroToDo:tasks', JSON.stringify(newTasks));
+
+    setTasks(newTasks)
     setTaskText('')
   }
 
@@ -36,6 +43,7 @@ function App() {
     const updatedTasks = tasks.map(task => {
       return task.id === id ? { ...task, done: !task.done } : task
     })
+    localStorage.setItem('@AfroToDo:tasks', JSON.stringify(updatedTasks));
     setTasks(updatedTasks)
   }
 
@@ -43,6 +51,7 @@ function App() {
     const filteredTasks = tasks.filter(task => {
       return task.id !== id
     })
+    localStorage.setItem('@AfroToDo:tasks', JSON.stringify(filteredTasks));
     setTasks(filteredTasks)
   }
 
