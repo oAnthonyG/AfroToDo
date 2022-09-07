@@ -13,7 +13,6 @@ function App() {
 
     return JSON.parse(localTasks) ||  [];
   });
-
   const doneCount = tasks.reduce((acc, task) => {
     return task.done ? acc += 1 : acc;
   }, 0);
@@ -65,14 +64,14 @@ function App() {
             placeholder="Insira uma nova atividade"
             value={taskText}
             onChange={handleChangeInput}></input>
-          <button><Plus /></button>
+          <button><Plus  /></button>
         </form>
 
         <h3 className={styles.status}>Tarefas concluídas <span> {doneCount} de {tasks.length}</span></h3>
 
         <ul className={styles.taskList}>
           {tasks.map(task =>
-            <Task
+            <Task 
               key={task.id}
               content={task.content}
               isDone={task.done}
