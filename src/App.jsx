@@ -10,7 +10,7 @@ function App() {
   const [taskText, setTaskText] = useState('')
   const [tasks, setTasks] = useState([])
 
-  const doneCount = tasks.reduce((acc, task) =>{
+  const doneCount = tasks.reduce((acc, task) => {
     return task.done ? acc += 1 : acc
   }, 0)
 
@@ -39,8 +39,8 @@ function App() {
     setTasks(updatedTasks)
   }
 
-  function handleRemoveTask(id){
-    const filteredTasks = tasks.filter(task =>{
+  function handleRemoveTask(id) {
+    const filteredTasks = tasks.filter(task => {
       return task.id !== id
     })
     setTasks(filteredTasks)
@@ -64,10 +64,11 @@ function App() {
         <ul className={styles.taskList}>
           {tasks.map(task =>
             <Task
+              key={task.id}
               content={task.content}
               isDone={task.done}
               onCheck={() => handleToggleTask(task.id)}
-              onRemove={()=> handleRemoveTask(task.id)} />)}
+              onRemove={() => handleRemoveTask(task.id)} />)}
         </ul>
       </main>
     </>
