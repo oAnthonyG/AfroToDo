@@ -10,6 +10,10 @@ function App() {
   const [taskText, setTaskText] = useState('')
   const [tasks, setTasks] = useState([])
 
+  const doneCount = tasks.reduce((acc, task) =>{
+    return task.done ? acc += 1 : acc
+  }, 0)
+
   function handleSubmit(event) {
     event.preventDefault()
 
@@ -35,6 +39,13 @@ function App() {
     setTasks(updatedTasks)
   }
 
+  function handleRemoveTask(id){
+    const filteredTasks = tasks.filter(task =>{
+      return task.id !== id
+    })
+    setTasks(filteredTasks)
+  }
+
   return (
     <>
       <Header />
@@ -48,14 +59,15 @@ function App() {
           <button><Plus /></button>
         </form>
 
-        <h3 className={styles.status}>Tarefas concluídas <span> 3 de 6</span></h3>
+        <h3 className={styles.status}>Tarefas concluídas <span> {doneCount} de {tasks.length}</span></h3>
 
         <ul className={styles.taskList}>
           {tasks.map(task =>
             <Task
               content={task.content}
               isDone={task.done}
-              onCheck={() => handleToggleTask(task.id)} />)}
+              onCheck={() => handleToggleTask(task.id)}
+              onRemove={()=> handleRemoveTask(task.id)} />)}
         </ul>
       </main>
     </>

@@ -18,7 +18,7 @@ export function Task(props) {
         {props.content}
       </p>
 
-      <button>
+      <button onClick={props.onRemove}>
         <Trash />
       </button>
     </li>
