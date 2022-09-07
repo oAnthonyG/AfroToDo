@@ -28,6 +28,13 @@ function App() {
     setTaskText(event.currentTarget.value)
   }
 
+  function handleToggleTask(id) {
+    const updatedTasks = tasks.map(task => {
+      return task.id === id ? { ...task, done: !task.done } : task
+    })
+    setTasks(updatedTasks)
+  }
+
   return (
     <>
       <Header />
@@ -44,7 +51,11 @@ function App() {
         <h3 className={styles.status}>Tarefas concluídas <span> 3 de 6</span></h3>
 
         <ul className={styles.taskList}>
-          {tasks.map(task => <Task content={task.content} />)}
+          {tasks.map(task =>
+            <Task
+              content={task.content}
+              isDone={task.done}
+              onCheck={() => handleToggleTask(task.id)} />)}
         </ul>
       </main>
     </>
