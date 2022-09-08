@@ -3,15 +3,15 @@ import './styles/global.scss';
 import styles from './App.module.scss';
 
 import { Header } from './components/Header';
-import { Plus } from 'phosphor-react';
+import { ClipboardText, Plus } from 'phosphor-react';
 import { Task } from './components/Task';
 
 function App() {
   const [taskText, setTaskText] = useState('')
-  const [tasks, setTasks] = useState(()=>{
+  const [tasks, setTasks] = useState(() => {
     const localTasks = localStorage.getItem('@AfroToDo:tasks');
 
-    return JSON.parse(localTasks) ||  [];
+    return JSON.parse(localTasks) || [];
   });
   const doneCount = tasks.reduce((acc, task) => {
     return task.done ? acc += 1 : acc;
@@ -64,20 +64,34 @@ function App() {
             placeholder="Insira uma nova atividade"
             value={taskText}
             onChange={handleChangeInput}></input>
-          <button><Plus  /></button>
+          <button><Plus /></button>
         </form>
 
-        <h3 className={styles.status}>Tarefas concluídas <span> {doneCount} de {tasks.length}</span></h3>
 
-        <ul className={styles.taskList}>
-          {tasks.map(task =>
-            <Task 
-              key={task.id}
-              content={task.content}
-              isDone={task.done}
-              onCheck={() => handleToggleTask(task.id)}
-              onRemove={() => handleRemoveTask(task.id)} />)}
-        </ul>
+        {tasks.length ? (
+          <>
+            <h3 className={styles.status}>Tarefas concluídas <span> {doneCount} de {tasks.length}</span></h3>
+
+            <ul className={styles.taskList}>
+
+              {tasks.map(task => (
+                <Task
+                  key={task.id}
+                  content={task.content}
+                  isDone={task.done}
+                  onCheck={() => handleToggleTask(task.id)}
+                  onRemove={() => handleRemoveTask(task.id)}
+                />
+              ))}
+            </ul>
+          </>
+        ) : (
+          <div className={styles.empty}>
+            <ClipboardText />
+            <p>Você não tem nenhuma tarefa no momento.</p>
+            <span>Adicione novas tarefas para que elas sejam mostradas.</span>
+          </div>
+        )}
       </main>
     </>
   )
