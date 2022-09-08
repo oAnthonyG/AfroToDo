@@ -23,8 +23,9 @@ function App() {
     const newTask = {
       id: Date.now(),
       content: taskText,
-      done: false
+      done: false 
     }
+    
     const newTasks = [...tasks, newTask];
 
     localStorage.setItem('@AfroToDo:tasks', JSON.stringify(newTasks));
@@ -64,7 +65,13 @@ function App() {
             placeholder="Insira uma nova atividade"
             value={taskText}
             onChange={handleChangeInput}></input>
+            <div className={styles.dataButton}>
+            <input 
+            type="text"
+            placeholder="Insira a data limite para a atividade">
+            </input>
           <button><Plus /></button>
+          </div>
         </form>
 
 

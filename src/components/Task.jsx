@@ -1,5 +1,5 @@
 import styles from './Task.module.scss'
-import { Check, Trash } from 'phosphor-react'
+import { CalendarBlank, Check, Trash } from 'phosphor-react'
 
 export function Task(props) {
   const styleIsDone = props.isDone ? styles.done : ''
@@ -12,15 +12,18 @@ export function Task(props) {
           <Check />
         </span>
       </label>
-
+ 
       <p className={styleIsDone}>
-        
+
         {props.content}
       </p>
 
-      <button onClick={props.onRemove}>
-        <Trash />
-      </button>
+      <div className={styles.buttonDataTrash}>
+        <button onClick={props.onRemove}>
+          <Trash />
+        </button>
+        <p> <CalendarBlank /> até 12/12/2022</p>
+      </div>
     </li>
   )
 }
