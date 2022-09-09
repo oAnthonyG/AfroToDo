@@ -19,8 +19,7 @@ function App() {
   }, 0);
 
   function handleDataTask(event){
-    
- 
+  setDataTesk(event.currentTarget.value)    
   }
 
   function handleSubmit(event) {
@@ -41,6 +40,7 @@ function App() {
 
     setTasks(newTasks)
     setTaskText('')
+    setDataTesk('')
   }
 
   function handleChangeInput(event) {
@@ -63,7 +63,7 @@ function App() {
     localStorage.setItem('@AfroToDo:tasks', JSON.stringify(filteredTasks));
     setTasks(filteredTasks)
   }
-console.log(dataTask)
+
   return (
     <>
       <Header />
