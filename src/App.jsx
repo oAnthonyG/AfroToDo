@@ -9,7 +9,7 @@ import { Task } from './components/Task';
 function App() {
   const [taskText, setTaskText] = useState('')
   const [dataTask, setDataTesk] = useState('')
-  const [tasks,  setTasks] = useState(() => {
+  const [tasks, setTasks] = useState(() => {
     const localTasks = localStorage.getItem('@AfroToDo:tasks');
 
     return JSON.parse(localTasks) || [];
@@ -18,12 +18,20 @@ function App() {
     return task.done ? acc += 1 : acc;
   }, 0);
 
-  function handleDataTask(event){
-  setDataTesk(event.currentTarget.value)    
-  }
+
 
   function handleSubmit(event) {
     event.preventDefault()
+
+    const dateFormated = dataTask.replace(
+      /^(\d{2})(?:\/|-)?(\d{2})(?:\/|-)(\d{4})$/,
+      '$3-$2-$1'
+    )
+    if (!dateFormated.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      console.error('Data invalida')
+      return
+    }
+    console.log(dateFormated)
 
     const newTask = {
       id: Date.now(),
@@ -33,7 +41,6 @@ function App() {
     }
 
 
-
     const newTasks = [...tasks, newTask];
 
     localStorage.setItem('@AfroToDo:tasks', JSON.stringify(newTasks));
@@ -41,6 +48,18 @@ function App() {
     setTasks(newTasks)
     setTaskText('')
     setDataTesk('')
+  }
+  const handleDataChange = (event) => {
+    if (dataTask.length === 10) {
+      setDataTesk('')
+      return
+    }
+
+    const dateFormated = event.target.value
+      .replace(/^(\d{2})/, '$1')
+      .replace(/^(\d{2})\/?(\d{2})/, '$1/$2')
+      .replace(/^(\d{2})\/?(\d{2})\/?(\d{4})$/, '$1/$2/$3')
+    setDataTesk(dateFormated)
   }
 
   function handleChangeInput(event) {
@@ -74,15 +93,16 @@ function App() {
             placeholder="Insira uma nova atividade"
             value={taskText}
             onChange={handleChangeInput}></input>
-            <div className={styles.dataButton}>
-            <input 
-            type="text"
-            placeholder="Insira a data limite para a atividade"
-            value={dataTask}
-            onChange={handleDataTask}
+          <div className={styles.dataButton}>
+            <input
+              name="dataTask"
+              type="text"
+              placeholder="Insira a data limite para a atividade"
+              value={dataTask}
+              onChange={handleDataChange}
             >
             </input>
-          <button><Plus /></button>
+            <button><Plus /></button>
           </div>
         </form>
 
