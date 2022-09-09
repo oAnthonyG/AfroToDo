@@ -8,7 +8,8 @@ import { Task } from './components/Task';
 
 function App() {
   const [taskText, setTaskText] = useState('')
-  const [tasks, setTasks] = useState(() => {
+  const [dataTask, setDataTesk] = useState('')
+  const [tasks,  setTasks] = useState(() => {
     const localTasks = localStorage.getItem('@AfroToDo:tasks');
 
     return JSON.parse(localTasks) || [];
@@ -17,15 +18,23 @@ function App() {
     return task.done ? acc += 1 : acc;
   }, 0);
 
+  function handleDataTask(event){
+    
+ 
+  }
+
   function handleSubmit(event) {
     event.preventDefault()
 
     const newTask = {
       id: Date.now(),
       content: taskText,
-      done: false 
+      done: false,
+      date: dataTask
     }
-    
+
+
+
     const newTasks = [...tasks, newTask];
 
     localStorage.setItem('@AfroToDo:tasks', JSON.stringify(newTasks));
@@ -54,7 +63,7 @@ function App() {
     localStorage.setItem('@AfroToDo:tasks', JSON.stringify(filteredTasks));
     setTasks(filteredTasks)
   }
-
+console.log(dataTask)
   return (
     <>
       <Header />
@@ -68,7 +77,10 @@ function App() {
             <div className={styles.dataButton}>
             <input 
             type="text"
-            placeholder="Insira a data limite para a atividade">
+            placeholder="Insira a data limite para a atividade"
+            value={dataTask}
+            onChange={handleDataTask}
+            >
             </input>
           <button><Plus /></button>
           </div>
@@ -86,6 +98,7 @@ function App() {
                   key={task.id}
                   content={task.content}
                   isDone={task.done}
+                  date={task.date}
                   onCheck={() => handleToggleTask(task.id)}
                   onRemove={() => handleRemoveTask(task.id)}
                 />
@@ -100,9 +113,9 @@ function App() {
           </div>
         )}
       </main>
+      <script src="vanilla-masker.min.js"></script>
     </>
   )
-
 }
 
 export default App

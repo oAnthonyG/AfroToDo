@@ -3,6 +3,7 @@ import { CalendarBlank, Check, Trash } from 'phosphor-react'
 
 export function Task(props) {
   const styleIsDone = props.isDone ? styles.done : ''
+  console.log(props)
   return (
     <li className={styles.task}>
       <label>
@@ -22,7 +23,7 @@ export function Task(props) {
         <button onClick={props.onRemove}>
           <Trash />
         </button>
-        <p> <CalendarBlank /> até 12/12/2022</p>
+        <p> <CalendarBlank /> até {props.date}</p>
       </div>
     </li>
   )
