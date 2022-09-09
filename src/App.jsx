@@ -36,7 +36,7 @@ function App() {
       id: Date.now(),
       content: taskText,
       done: false,
-      date: dataTask
+      date: dataTask,
     }
 
     const newTasks = [...tasks, newTask];
@@ -73,8 +73,15 @@ function App() {
     setTasks(updatedTasks)
 
     
+    const dataChecked = new Date()
+  
+    console.log(dataChecked)
   }
+  
+    
 
+  
+  
   function handleRemoveTask(id) {
     const filteredTasks = tasks.filter(task => {
       return task.id !== id
@@ -120,7 +127,7 @@ function App() {
                   date={task.date}
                   onCheck={() => handleToggleTask(task.id)}
                   onRemove={() => handleRemoveTask(task.id)}
-                  onAdd={()=> handleAddData(task.date)}
+                  
                 />
               ))}
             </ul>
