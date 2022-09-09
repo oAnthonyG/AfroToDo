@@ -1,10 +1,11 @@
 import styles from './Task.module.scss'
-import { CalendarBlank, Check, Trash } from 'phosphor-react'
+import { CalendarBlank, CalendarCheck, Check, Trash } from 'phosphor-react'
 
 export function Task(props) {
   const styleIsDone = props.isDone ? styles.done : ''
   return (
     <li className={styles.task}>
+      <div className={styles.labelTextTrash}>
       <label>
         <input type="checkbox" checked={props.isDone} onChange={props.onCheck} />
 
@@ -18,11 +19,14 @@ export function Task(props) {
         {props.content}
       </p>
 
-      <div className={styles.buttonDataTrash}>
         <button onClick={props.onRemove}>
           <Trash />
         </button>
+        </div>
+      <div className={styles.buttonDataTrash}>
+        <p> <CalendarCheck /> até {props.date}</p>
         <p> <CalendarBlank /> até {props.date}</p>
+        
       </div>
     </li>
   )

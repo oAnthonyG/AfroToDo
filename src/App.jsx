@@ -19,7 +19,6 @@ function App() {
   }, 0);
 
 
-
   function handleSubmit(event) {
     event.preventDefault()
 
@@ -39,7 +38,6 @@ function App() {
       done: false,
       date: dataTask
     }
-
 
     const newTasks = [...tasks, newTask];
 
@@ -73,6 +71,8 @@ function App() {
     })
     localStorage.setItem('@AfroToDo:tasks', JSON.stringify(updatedTasks));
     setTasks(updatedTasks)
+
+    
   }
 
   function handleRemoveTask(id) {
@@ -106,7 +106,6 @@ function App() {
           </div>
         </form>
 
-
         {tasks.length ? (
           <>
             <h3 className={styles.status}>Tarefas concluídas <span> {doneCount} de {tasks.length}</span></h3>
@@ -121,6 +120,7 @@ function App() {
                   date={task.date}
                   onCheck={() => handleToggleTask(task.id)}
                   onRemove={() => handleRemoveTask(task.id)}
+                  onAdd={()=> handleAddData(task.date)}
                 />
               ))}
             </ul>
@@ -133,7 +133,6 @@ function App() {
           </div>
         )}
       </main>
-      <script src="vanilla-masker.min.js"></script>
     </>
   )
 }
