@@ -45,7 +45,7 @@
   }
 
   p {
-    width: 100%;
+    width: 80%;
 
     &.done {
       text-decoration: line-through;
@@ -69,8 +69,9 @@
       background-color: $gray-100;
     }
   }
-  .buttonEdit{
-    &:hover{
+
+  .buttonEdit {
+    &:hover {
       color: $green-300;
     }
   }
@@ -84,12 +85,17 @@
       margin-left: 5.8rem;
     }
 
+    .finishP {
+      width: 12rem;
+    }
+
 
     p {
       font-size: 0.8rem;
       height: 1.25rem;
-      width: 10rem;
+      width: 8rem;
       flex-grow: 0;
+      color: $gray-700;
 
       .svgCheck {
         color: $green-300;

@@ -19,14 +19,14 @@ export function Task(props) {
           {props.content}
         </p>
         <button className={styles.buttonEdit}>
-        <PencilSimpleLine />
+          <PencilSimpleLine />
         </button>
         <button onClick={props.onRemove}>
           <Trash />
         </button>
       </div>
       <div className={styles.buttonDataTrash}>
-        {props.dateFinish && <p> <CalendarCheck className={styles.svgCheck} /> até {props.dateFinish}</p>}
+        {props.dateFinish && <p className={styles.finishP}><CalendarCheck className={styles.svgCheck} />Finalizado em {props.dateFinish}</p>}
 
         <p> <CalendarBlank /> até {props.date}</p>
 
