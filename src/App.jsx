@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './styles/global.scss';
 import styles from './App.module.scss';
 
+import { format } from 'date-fns'
+
 import { Header } from './components/Header';
 import { ClipboardText, Plus } from 'phosphor-react';
 import { Task } from './components/Task';
@@ -30,13 +32,13 @@ function App() {
       console.error('Data invalida')
       return
     }
-    console.log(dateFormated)
 
     const newTask = {
       id: Date.now(),
       content: taskText,
       done: false,
       date: dataTask,
+      dateFinish: undefined
     }
 
     const newTasks = [...tasks, newTask];
@@ -66,22 +68,27 @@ function App() {
   }
 
   function handleToggleTask(id) {
+    const dateFinish = format(new Date(), "dd/MM/yyyy")
     const updatedTasks = tasks.map(task => {
-      return task.id === id ? { ...task, done: !task.done } : task
+
+      return task.id === id ? {
+        ...task,
+        done: !task.done,
+        dateFinish: !task.done ? dateFinish : undefined 
+      } : task
     })
     localStorage.setItem('@AfroToDo:tasks', JSON.stringify(updatedTasks));
     setTasks(updatedTasks)
 
-    
-    const dataChecked = new Date()
-  
-    console.log(dataChecked)
-  }
-  
-    
 
-  
-  
+
+
+  }
+
+
+
+
+
   function handleRemoveTask(id) {
     const filteredTasks = tasks.filter(task => {
       return task.id !== id
@@ -125,9 +132,9 @@ function App() {
                   content={task.content}
                   isDone={task.done}
                   date={task.date}
+                  dateFinish={task.dateFinish}
                   onCheck={() => handleToggleTask(task.id)}
                   onRemove={() => handleRemoveTask(task.id)}
-                  
                 />
               ))}
             </ul>

@@ -1,32 +1,35 @@
 import styles from './Task.module.scss'
-import { CalendarBlank, CalendarCheck, Check, Trash } from 'phosphor-react'
+import { CalendarBlank, CalendarCheck, Check, Trash, PencilSimpleLine } from 'phosphor-react'
 
 export function Task(props) {
   const styleIsDone = props.isDone ? styles.done : ''
   return (
     <li className={styles.task}>
       <div className={styles.labelTextTrash}>
-      <label>
-        <input type="checkbox" checked={props.isDone} onChange={props.onCheck} />
+        <label>
+          <input type="checkbox" checked={props.isDone} onChange={props.onCheck} />
 
-        <span>
-          <Check />
-        </span>
-      </label>
- 
-      <p className={styleIsDone}>
+          <span>
+            <Check />
+          </span>
+        </label>
 
-        {props.content}
-      </p>
+        <p className={styleIsDone}>
 
+          {props.content}
+        </p>
+        <button className={styles.buttonEdit}>
+        <PencilSimpleLine />
+        </button>
         <button onClick={props.onRemove}>
           <Trash />
         </button>
-        </div>
+      </div>
       <div className={styles.buttonDataTrash}>
-        <p> <CalendarCheck /> até {props.date}</p>
+        {props.dateFinish && <p> <CalendarCheck className={styles.svgCheck} /> até {props.dateFinish}</p>}
+
         <p> <CalendarBlank /> até {props.date}</p>
-        
+
       </div>
     </li>
   )
