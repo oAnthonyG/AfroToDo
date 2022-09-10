@@ -1,7 +1,4 @@
 
-### Link
-
-- Solution URL: [Solution GitHub]()
 
 
 
