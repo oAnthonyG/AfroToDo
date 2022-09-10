@@ -2,7 +2,7 @@
   "name": "primeiro-projeto-react",
   "private": true,
   "version": "0.0.0",
-  "homepage": "React/",
+  "homepage": "primeiro-projeto-react/src/",
   "type": "module",
   "scripts": {
     "dev": "vite",
