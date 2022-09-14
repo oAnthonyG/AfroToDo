@@ -46,6 +46,7 @@
 
   p {
     width: 80%;
+    word-break: break-all;
 
     &.done {
       text-decoration: line-through;

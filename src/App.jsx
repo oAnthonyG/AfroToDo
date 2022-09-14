@@ -20,7 +20,6 @@ function App() {
     return task.done ? acc += 1 : acc;
   }, 0);
 
-
   function handleSubmit(event) {
     event.preventDefault()
 
@@ -74,19 +73,14 @@ function App() {
       return task.id === id ? {
         ...task,
         done: !task.done,
-        dateFinish: !task.done ? dateFinish : undefined 
+        dateFinish: !task.done ? dateFinish : undefined
       } : task
     })
     localStorage.setItem('@AfroToDo:tasks', JSON.stringify(updatedTasks));
     setTasks(updatedTasks)
 
 
-
-
   }
-
-
-
 
 
   function handleRemoveTask(id) {
