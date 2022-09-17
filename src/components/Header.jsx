@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import logoSvg from './AfroToDo/assets/logo.svg';
+import logoSvg from '/AfroToDo/assets/logo.svg';
 
 export function Header(){
     return(
