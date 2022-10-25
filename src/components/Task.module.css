@@ -1,0 +1,94 @@
+.task {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #C8E6D2;
+  background-color: #fff;
+}
+.task .labelTextTrash {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+.task label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.task label input[type=checkbox] {
+  display: none;
+}
+.task label input[type=checkbox] + span {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 4px;
+  border: 2px solid #4F4F4F;
+  color: transparent;
+  transition: 0.2s;
+}
+.task label input[type=checkbox]:checked + span {
+  background-color: #70AE6E;
+  border-color: #70AE6E;
+  color: #fff;
+}
+.task p {
+  width: 80%;
+  word-break: break-all;
+}
+.task p.done {
+  text-decoration: line-through;
+  color: #707070;
+}
+.task button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  cursor: pointer;
+  color: #4F4F4F;
+}
+.task button:hover {
+  color: #FE5F55;
+  background-color: #F1F7ED;
+}
+.task .buttonEdit:hover {
+  color: #70AE6E;
+}
+.task .buttonDataTrash {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.task .buttonDataTrash button {
+  margin-left: 5.8rem;
+}
+.task .buttonDataTrash .finishP {
+  width: 12rem;
+}
+.task .buttonDataTrash p {
+  font-size: 0.8rem;
+  height: 1.25rem;
+  width: 8rem;
+  flex-grow: 0;
+  color: #4F4F4F;
+}
+.task .buttonDataTrash p .svgCheck {
+  color: #70AE6E;
+}
+.task .buttonDataTrash p svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  vertical-align: sub;
+  margin-right: 0.5rem;
+}
+.task .buttonDataTrash .dataChange {
+  display: flex;
+}/*# sourceMappingURL=Task.module.css.map */

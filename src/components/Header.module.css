@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4.5rem;
+  background-color: #70AE6E;
+}
+.header img {
+  width: 8.75rem;
+}/*# sourceMappingURL=Header.module.css.map */

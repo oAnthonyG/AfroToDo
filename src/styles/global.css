@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* :focus {
+  outline: 2px solid #70AE6E;
+}
+
+@media screen and (max-width: 1080px) {
+  :root {
+    font-size: 93.75%;
+  }
+}
+@media screen and (max-width: 768px) {
+  :root {
+    font-size: 87.5%;
+  }
+}
+
+body, input, button {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: #0F0A0A;
+}
+
+body {
+  background-color: #EFF1F3;
+}/*# sourceMappingURL=global.css.map */
